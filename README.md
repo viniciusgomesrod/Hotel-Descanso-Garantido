@@ -1,6 +1,6 @@
 # Hotel Descanso Garantido
 
-!()
+!(https://github.com/viniciusgomesrod/Hotel-Descanso-Garantido/blob/main/logo-hotel.png)
 
 Bem-vindo ao repositório do projeto **Hotel Descanso Garantido**! Este software foi desenvolvido para gerenciar um hotel, incluindo cadastro de clientes, funcionários, estadias, além de realizar pesquisas e cálculos de valores de estadia dos clientes. 
 
