@@ -109,11 +109,11 @@ void cadastroCliente(struct Cliente clientes[], int *contadorClientes) {
         fflush(stdout); 
         scanf(" %[^\n]", clientes[i].nome);
 
-        printf("Insira o endereço: ");
+        printf("Insira o endereço (sem números): ");
         fflush(stdout); 
         scanf(" %[^\n]", clientes[i].endereco);
 
-        printf("Insira o telefone de contato: ");
+        printf("Insira o telefone de contato (somente números sem espaço): ");
         fflush(stdout); 
         scanf("%d", &clientes[i].telefone);
         
@@ -150,7 +150,7 @@ void cadastroFuncionario(struct Funcionario funcionarios[], int *contadorFuncion
         fflush(stdout); 
         scanf(" %[^\n]", funcionarios[i].nome);
 
-        printf("Insira o telefone do funcionário: ");
+        printf("Insira o telefone do funcionário (somente números sem espaço): ");
         fflush(stdout); 
         scanf("%d", &funcionarios[i].telefone);
 
@@ -158,7 +158,7 @@ void cadastroFuncionario(struct Funcionario funcionarios[], int *contadorFuncion
         fflush(stdout); 
         scanf(" %[^\n]", funcionarios[i].cargo);
 
-        printf("Insira o salário do funcionário: ");
+        printf("Insira o salário do funcionário (R$.00) : ");
         fflush(stdout); 
         scanf("%f", &funcionarios[i].salario);
 
@@ -191,11 +191,11 @@ void cadastrarEstadia(struct Estadia estadias[], int *contadorEstadias, struct C
 
         estadias[i].id = *contadorEstadias + 1;
 
-        printf("Insira a data de entrada (yyyymmdd): ");
+        printf("Insira a data de entrada (aaaammdd): ");
         fflush(stdout); 
         scanf("%d", &estadias[i].dataEntrada);
 
-        printf("Insira a data de saída (yyyymmdd): ");
+        printf("Insira a data de saída (aaaammdd): ");
         fflush(stdout); 
         scanf("%d", &estadias[i].dataSaida);
 
@@ -241,7 +241,7 @@ void cadastrarEstadia(struct Estadia estadias[], int *contadorEstadias, struct C
         arquivo = fopen("estadias.txt", "a");
 
         if (arquivo != NULL) {
-            fprintf(arquivo, "ESTADIA ID: %d\ndataEntrada: %d\ndataSaida: %d\ndiarias: %d\nID cliente: %d\nnumero quarto: %d\nhospedes: %d\n", estadias[i].id, estadias[i].dataEntrada, estadias[i].dataSaida,
+            fprintf(arquivo, "\n\nESTADIA ID: %d\ndataEntrada: %d\ndataSaida: %d\ndiarias: %d\nID cliente: %d\nnumero quarto: %d\nhospedes: %d\n", estadias[i].id, estadias[i].dataEntrada, estadias[i].dataSaida,
                     estadias[i].diarias, estadias[i].idCliente, estadias[i].numeroQuarto, estadias[i].hospedes);
             fclose(arquivo);
         } else {
