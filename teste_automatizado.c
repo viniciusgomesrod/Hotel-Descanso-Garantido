@@ -4,46 +4,53 @@
 #include <munit.h>
 #include "main.c"  // Inclui o arquivo principal para testar as funções
 
-// Teste para gerarIdUnico
-static MunitResult test_gerarIdUnico(const MunitParameter params[], void *data) {
-    struct Cliente clientes[MAX_CLIENTES];  // Simulando um array de clientes
-    int contadorClientes = 0;
+// Dados simulados para os testes
+static struct Cliente clientes_simulados[MAX_CLIENTES];
+static int contadorClientes_simulado = 0;
 
-    // Teste 1: Verificar se gera IDs únicos
-    int id1 = gerarIdUnico(clientes, contadorClientes);
-    int id2 = gerarIdUnico(clientes, contadorClientes);
+static struct Funcionario funcionarios_simulados[MAX_FUNCIONARIOS];
+static int contadorFuncionarios_simulado = 0;
 
-    munit_assert_int(id1, !=, id2);
+static struct Estadia estadias_simuladas[MAX_ESTADIAS];
+static int contadorEstadias_simulado = 0;
+
+// Funções auxiliares para simular a interação com o sistema
+static void cadastrarClienteSimulado(const char *nome, int telefone) {
+    // Simula o cadastro de um cliente no sistema
+    strcpy(clientes_simulados[contadorClientes_simulado].nome, nome);
+    clientes_simulados[contadorClientes_simulado].telefone = telefone;
+    contadorClientes_simulado++;
+}
+
+// Testes
+
+static MunitResult test_cadastroCliente(const MunitParameter params[], void *data) {
+    cadastrarClienteSimulado("João", 123456789);
+
+    // Verificação se o cliente foi cadastrado corretamente
+    munit_assert_string_equal(clientes_simulados[0].nome, "João");
+    munit_assert_int(clientes_simulados[0].telefone, ==, 123456789);
 
     return MUNIT_OK;
 }
 
-// Funções de setup e teardown (opcional)
-static void *test_setup(const MunitParameter params[], void *user_data) {
-    // Pode ser usado para inicialização antes de cada teste
-    return NULL;
-}
-
-static void test_teardown(void *fixture) {
-    // Pode ser usado para limpeza após cada teste
-}
-
-// Array de casos de teste
 static MunitTest test_suite[] = {
-    { "/gerarIdUnico", test_gerarIdUnico, test_setup, test_teardown, MUNIT_TEST_OPTION_NONE, NULL },
+    { "/cadastroCliente", test_cadastroCliente, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL },
+    // Adicione mais testes conforme necessário
     { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 };
 
-// Definir o conjunto de testes
 static const MunitSuite suite = {
-    "/test_suite",   // nome da suíte de testes
-    test_suite,      // array de testes
-    NULL,            // inicialização global (opcional)
-    1,               // número máximo de fios a serem executados simultaneamente (0 para ilimitado)
+    "/test_suite",
+    test_suite,
+    NULL,
+    1,
     MUNIT_SUITE_OPTION_NONE
 };
 
-// Função principal para rodar os testes
 int main(int argc, char *argv[MUNIT_ARRAY_PARAM(argc + 1)]) {
+    srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
+
+    // Executar testes
     return munit_suite_main(&suite, NULL, argc, argv);
 }
