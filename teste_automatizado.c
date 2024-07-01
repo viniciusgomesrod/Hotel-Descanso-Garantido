@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <munit.h>
-#include "hotel.c"  // Inclui o arquivo principal para testar as funções
+#include "main.c"  // Inclui o arquivo principal para testar as funções
 
 // Teste para gerarIdUnico
 static MunitResult test_gerarIdUnico(const MunitParameter params[], void *data) {
