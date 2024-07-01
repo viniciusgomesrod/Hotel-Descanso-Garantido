@@ -4,8 +4,6 @@
 
 Bem-vindo ao repositório do projeto **Hotel Descanso Garantido**! Este software foi desenvolvido para gerenciar um hotel, incluindo cadastro de clientes, funcionários, estadias, além de realizar pesquisas e cálculos de valores de estadia dos clientes. 
 
-
-
 ## Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
@@ -41,6 +39,10 @@ Uma solução inovadora e intuitiva aos usuários, o software foi criado inicial
 3. Utilize a função de cadastro para cadastrar cliente ou funcionário.
 4. Utilize a função de pesquisa para encontrar registros rapidamente.
 5. Ao clicar em dar baixa em estadia, todo o cálculo será feito e não haverá mais registros do cliente.
+
+## Fluxograma do Usuário
+
+![Fluxograma](https://github.com/viniciusgomesrod/Hotel-Descanso-Garantido/blob/main/Fluxograma.jpg)
 
 ## Licença
 
